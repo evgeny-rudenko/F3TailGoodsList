@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="GoodsDeserializer.cs" />
     <Compile Include="GoodsList.cs" />
+    <Compile Include="ImagesList.cs" />
     <Compile Include="ImgLoader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

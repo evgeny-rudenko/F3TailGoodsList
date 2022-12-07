@@ -35,17 +35,17 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.rtbDescription = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textboxFilter = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tbIdGoods = new System.Windows.Forms.TextBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.cbFirst1000 = new System.Windows.Forms.CheckBox();
+            this.cbWithRemains = new System.Windows.Forms.CheckBox();
+            this.cbWithouthImages = new System.Windows.Forms.CheckBox();
             this.goodsListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -58,11 +58,11 @@
             this.dataGrid.AllowUserToAddRows = false;
             this.dataGrid.AllowUserToDeleteRows = false;
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid.Location = new System.Drawing.Point(12, 307);
+            this.dataGrid.Location = new System.Drawing.Point(12, 300);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.ReadOnly = true;
             this.dataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGrid.Size = new System.Drawing.Size(1404, 402);
+            this.dataGrid.Size = new System.Drawing.Size(1404, 409);
             this.dataGrid.TabIndex = 0;
             this.dataGrid.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_RowEnter);
             // 
@@ -72,7 +72,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(181, 61);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Загрузить БД товаров";
+            this.button1.Text = "Обновить БД товаров";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -99,25 +99,6 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(119, 17);
             this.toolStripStatusLabel2.Text = "Текущий ИД товара ";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(12, 141);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(181, 59);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Только с остатками";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(10, 79);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(183, 56);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Первые 1000";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // rtbDescription
             // 
             this.rtbDescription.Location = new System.Drawing.Point(243, 87);
@@ -143,23 +124,14 @@
             this.textboxFilter.Size = new System.Drawing.Size(755, 29);
             this.textboxFilter.TabIndex = 9;
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(12, 206);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(181, 57);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Без картинок";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(1018, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(316, 13);
+            this.label2.Size = new System.Drawing.Size(121, 13);
             this.label2.TabIndex = 11;
-            this.label2.Text = "Изображение товара. Перетащите картинку для сохранения";
+            this.label2.Text = "Изображение товара. ";
             // 
             // tbIdGoods
             // 
@@ -198,6 +170,36 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // cbFirst1000
+            // 
+            this.cbFirst1000.AutoSize = true;
+            this.cbFirst1000.Location = new System.Drawing.Point(12, 89);
+            this.cbFirst1000.Name = "cbFirst1000";
+            this.cbFirst1000.Size = new System.Drawing.Size(142, 17);
+            this.cbFirst1000.TabIndex = 15;
+            this.cbFirst1000.Text = "Выбрать 1000 записей";
+            this.cbFirst1000.UseVisualStyleBackColor = true;
+            // 
+            // cbWithRemains
+            // 
+            this.cbWithRemains.AutoSize = true;
+            this.cbWithRemains.Location = new System.Drawing.Point(12, 113);
+            this.cbWithRemains.Name = "cbWithRemains";
+            this.cbWithRemains.Size = new System.Drawing.Size(129, 17);
+            this.cbWithRemains.TabIndex = 16;
+            this.cbWithRemains.Text = "Только с остатками";
+            this.cbWithRemains.UseVisualStyleBackColor = true;
+            // 
+            // cbWithouthImages
+            // 
+            this.cbWithouthImages.AutoSize = true;
+            this.cbWithouthImages.Location = new System.Drawing.Point(11, 137);
+            this.cbWithouthImages.Name = "cbWithouthImages";
+            this.cbWithouthImages.Size = new System.Drawing.Size(95, 17);
+            this.cbWithouthImages.TabIndex = 17;
+            this.cbWithouthImages.Text = "Без картинок";
+            this.cbWithouthImages.UseVisualStyleBackColor = true;
+            // 
             // goodsListBindingSource
             // 
             this.goodsListBindingSource.DataSource = typeof(F3TailGoodsList.GoodsList);
@@ -207,17 +209,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1431, 748);
+            this.Controls.Add(this.cbWithouthImages);
+            this.Controls.Add(this.cbWithRemains);
+            this.Controls.Add(this.cbFirst1000);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.tbIdGoods);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.textboxFilter);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rtbDescription);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGrid);
@@ -242,18 +244,18 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.BindingSource goodsListBindingSource;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.RichTextBox rtbDescription;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textboxFilter;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.TextBox tbIdGoods;
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.CheckBox cbFirst1000;
+        private System.Windows.Forms.CheckBox cbWithRemains;
+        private System.Windows.Forms.CheckBox cbWithouthImages;
     }
 }
 

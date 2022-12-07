@@ -36,21 +36,49 @@ namespace F3TailGoodsList
 
         }
 
-        public void ReadDB ()
+        public void ReadDB (int  Firstn= 100000, bool WithQuantity=false )
         {
+
+            ImagesListFromDir img = new ImagesListFromDir();
+            
+
+            List<F3TailRemain> remains = new List<F3TailRemain>();
+                        
             toolStripStatusLabel1.Text = "Начинаю загрузку";
             GoodsList goods = new GoodsList();
             toolStripStatusLabel1.Text = "Загружено " + goods.result.F3TailRemains.Count.ToString();
-            
-            if (textboxFilter.Text.Length>1)
+
+            remains = goods.result.F3TailRemains.OrderBy(x=>x.NAME).ToList();
+
+
+            //только с остатками
+            if (cbWithRemains.Checked)
             {
-                dataGrid.DataSource = goods.result.F3TailRemains.OrderBy(x => x.NAME).Where(x => x.NAME.Contains(textboxFilter.Text)).ToList();
+                remains = remains.Where(x => x.quantity >= 1).ToList();
             }
-            else
+
+            //фильтр по наименованию
+            if (textboxFilter.Text.Length > 1)
             {
-                dataGrid.DataSource = goods.result.F3TailRemains.OrderBy(x => x.NAME).ToList();
+                remains = remains.Where(x => x.NAME.ToUpper().Contains(textboxFilter.Text.ToUpper())).ToList(); 
             }
             
+            //Только без картинок
+            if (cbWithouthImages.Checked)
+            {
+                remains = remains.Where(x => !img.images.Contains(x.ID_GOODS_GLOBAL.ToString())).ToList();
+            }
+            
+            ///только первая тысяча
+            if (cbFirst1000.Checked)
+            {
+                remains = remains.Take(1000).ToList();
+            }
+
+            
+            dataGrid.DataSource = remains;  
+
+        
             
             
         }
@@ -58,9 +86,9 @@ namespace F3TailGoodsList
         private void button1_Click(object sender, EventArgs e)
         {
 
+            
+            ImagesListFromDir img = new ImagesListFromDir();
             ReadDB();
-
-
 
         }
 
@@ -166,11 +194,16 @@ namespace F3TailGoodsList
 
         private void button2_Click(object sender, EventArgs e)
         {
-            GoodsList goods = new GoodsList();
-            toolStripStatusLabel1.Text = "Загружено " + goods.result.F3TailRemains.Count.ToString();
-            
+            //GoodsList goods = new GoodsList();
+            //toolStripStatusLabel1.Text = "Загружено " + goods.result.F3TailRemains.Count.ToString();
+            ReadDB(WithQuantity: true);
            /// dataGrid.DataSource = goods.result.F3TailRemains.FindAll();
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ReadDB(Firstn:1000);
         }
     }
 }
